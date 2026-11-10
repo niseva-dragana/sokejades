@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="mk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Шо ќе јадеш?</title>
+<meta name="description" content="Тостови, сендвичи, бели пецива, грицки и пијалоци. Прати порака на 075 754 888 и подигни без чекање во ред.">
+<meta name="theme-color" content="#0b0b0c">
+<meta property="og:title" content="Шо ќе јадеш?">
+<meta property="og:description" content="Прати порака. Избегни ја гужвата. Тостови, сендвичи, бели пецива, грицки и пијалоци.">
+<meta property="og:image" content="img/hero.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Golos+Text:wght@400;500;600;700&family=PT+Serif:wght@700&display=swap" rel="stylesheet">
+<style>
+:root {
+  /* One dark visual world taken from the brand: black logo, white condensed type, red accent from their posts,
+     and the cream-and-wine paper of their printed menu for the hot food. Layout: hero, how-to-order, menu with an order tray. */
+  --ink: #0b0b0c;
+  --panel: #161618;
+  --line: #2b2b2f;
+  --text: #f5f1ea;
+  --muted: #a7a29a;
+  --red: #e5262b;
+  --paper: #f3ebdd;
+  --wine: #7b1e2b;
+  --paper-ink: #2a1d18;
+  --display: "Oswald", "Arial Narrow", Impact, sans-serif;
+  --body: "Golos Text", "Segoe UI", system-ui, sans-serif;
+  --serif: "PT Serif", Georgia, serif;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body {
+  background: var(--ink);
+  color: var(--text);
+  font-family: var(--body);
+  font-size: 16px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+img { max-width: 100%; display: block; }
+a { color: inherit; }
+.wrap { max-width: 1160px; margin: 0 auto; padding: 0 20px; }
+h1, h2, h3 { font-family: var(--display); text-transform: uppercase; letter-spacing: .01em; text-wrap: balance; margin: 0; }
+:focus-visible { outline: 3px solid var(--red); outline-offset: 3px; }
+.q { color: var(--red); }
+
+/* Header */
+header.top {
+  position: sticky; top: 0; z-index: 20;
+  background: color-mix(in srgb, var(--ink) 86%, transparent);
+  backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line);
+}
+.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; height: 64px; }
+.mark {
+  display: inline-grid; place-items: center;
+  width: 46px; height: 46px; border-radius: 50%;
+  background: #000; border: 1.5px solid #fff;
+  font: 700 11px/0.95 var(--display); text-align: center; text-transform: uppercase; color: #fff;
+  text-decoration: none; flex: 0 0 auto;
+}
+nav.links { display: flex; gap: 22px; font-weight: 600; font-size: 15px; }
+nav.links a { text-decoration: none; color: var(--muted); }
+nav.links a:hover { color: var(--text); }
+@media (max-width: 720px) { nav.links { display: none; } }
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  font: 700 15px var(--body); text-decoration: none; cursor: pointer;
+  border-radius: 999px; padding: 13px 22px; border: 2px solid transparent;
+  transition: transform .12s ease, background-color .15s ease;
+}
+.btn:active { transform: scale(.97); }
+.btn-red { background: var(--red); color: #fff; }
+.btn-red:hover { background: #c81e23; }
+.btn-ghost { background: transparent; color: var(--text); border-color: var(--line); }
+.btn-ghost:hover { border-color: var(--text); }
+.btn-small { padding: 9px 16px; font-size: 14px; }
+.btn svg { width: 20px; height: 20px; flex: 0 0 auto; }
+
+/* Hero */
+.hero { padding: 28px 0 40px; }
+.hero .wrap { display: grid; grid-template-columns: 1.15fr .85fr; gap: 40px; align-items: center; }
+.hero h1 {
+  font-size: clamp(76px, 13vw, 176px); line-height: .84; font-weight: 700; letter-spacing: -.01em;
+}
+.hero .lead { font-size: clamp(18px, 2.2vw, 21px); color: var(--muted); max-width: 30em; margin: 22px 0 26px; }
+.hero .lead b { color: var(--text); font-weight: 600; }
+.cta { display: flex; flex-wrap: wrap; gap: 12px; }
+.phone-line { margin-top: 18px; font-size: 15px; color: var(--muted); }
+.phone-line a { color: var(--text); font-weight: 700; text-decoration: none; font-variant-numeric: tabular-nums; }
+.hero-photo { position: relative; border-radius: 22px; overflow: hidden; aspect-ratio: 4 / 5; background: var(--panel); }
+.hero-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center 40%; }
+.hero-photo .tag {
+  position: absolute; left: 14px; top: 14px;
+  background: var(--red); color: #fff; font: 700 14px var(--body);
+  padding: 8px 14px; border-radius: 999px;
+}
+@media (max-width: 820px) {
+  .hero .wrap { grid-template-columns: 1fr; gap: 26px; }
+  .hero-photo { aspect-ratio: 4 / 3.4; }
+}
+
+/* Red band */
+.band { background: var(--red); color: #fff; overflow: hidden; padding: 14px 0; }
+.band .track { display: flex; width: max-content; animation: slide 28s linear infinite; }
+.band .seq { display: flex; align-items: center; gap: 28px; padding-right: 28px; }
+.band span { font: 700 clamp(20px, 2.6vw, 26px) var(--display); text-transform: uppercase; letter-spacing: .02em; white-space: nowrap; }
+@keyframes slide { to { transform: translateX(-50%); } }
+@media (prefers-reduced-motion: reduce) { .band .track { animation: none; } }
+
+section { padding: 72px 0; }
+.eyebrow { font: 600 13px var(--body); letter-spacing: .12em; text-transform: uppercase; color: var(--red); margin: 0 0 10px; }
+.sec-head h2 { font-size: clamp(38px, 6vw, 64px); line-height: .95; }
+.sec-head p { color: var(--muted); max-width: 36em; margin: 12px 0 0; }
+
+/* How to order */
+.how .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; margin-top: 34px; }
+.steps { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 14px; }
+.steps li { display: grid; grid-template-columns: 56px 1fr; gap: 16px; align-items: start; background: var(--panel); border: 1px solid var(--line); border-radius: 18px; padding: 18px; }
+.steps .n { font: 700 40px/1 var(--display); color: var(--red); }
+.steps h3 { font-size: 22px; line-height: 1.1; margin-bottom: 4px; }
+.steps p { margin: 0; color: var(--muted); }
+.channels { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+.chan { display: inline-flex; align-items: center; gap: 7px; font: 600 14px var(--body); text-decoration: none; padding: 7px 12px; border-radius: 999px; background: #222226; border: 1px solid var(--line); }
+.chan:hover { border-color: var(--text); }
+.chan svg { width: 16px; height: 16px; }
+.how-photo { border-radius: 22px; overflow: hidden; aspect-ratio: 4 / 5; }
+.how-photo img { width: 100%; height: 100%; object-fit: cover; }
+@media (max-width: 820px) { .how .grid { grid-template-columns: 1fr; } .how-photo { aspect-ratio: 1 / 1; } }
+
+/* Menu */
+.menu { background: #101012; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.tabs { display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none; margin: 28px 0 22px; padding-bottom: 2px; }
+.tabs::-webkit-scrollbar { display: none; }
+.tab {
+  flex: 0 0 auto; font: 700 15px var(--body); color: var(--text); cursor: pointer;
+  background: var(--panel); border: 1.5px solid var(--line); border-radius: 999px; padding: 10px 18px;
+}
+.tab[aria-selected="true"] { background: var(--text); color: var(--ink); border-color: var(--text); }
+
+/* Paper menu (hot food), styled after their printed menu */
+.paper {
+  background: var(--paper); color: var(--paper-ink);
+  border-radius: 6px; padding: clamp(22px, 4vw, 44px);
+  box-shadow: 0 24px 60px rgba(0,0,0,.45);
+  max-width: 760px; margin: 0 auto;
+}
+.paper .title { font: 700 clamp(34px, 6vw, 52px)/1 var(--serif); color: var(--wine); text-align: center; text-transform: uppercase; margin: 0; }
+.paper .sub { text-align: center; letter-spacing: .4em; font: 600 13px var(--body); color: var(--paper-ink); margin: 10px 0 8px; display: flex; align-items: center; gap: 14px; }
+.paper .sub::before, .paper .sub::after { content: ""; flex: 1; height: 1px; background: currentColor; opacity: .5; }
+.grp { margin-top: 26px; }
+.grp h3 { font: 700 24px var(--serif); color: var(--wine); text-transform: uppercase; display: flex; align-items: center; gap: 14px; margin-bottom: 8px; letter-spacing: .02em; }
+.grp h3::after { content: ""; flex: 1; height: 1.5px; background: var(--wine); opacity: .6; }
+.row { display: flex; align-items: center; gap: 10px; padding: 9px 0; border-bottom: 1px dashed rgba(42,29,24,.18); }
+.row:last-child { border-bottom: 0; }
+.row .nm { font-weight: 600; font-size: 16.5px; }
+.row .new { font: 700 11px var(--body); letter-spacing: .06em; background: var(--red); color: #fff; border-radius: 4px; padding: 2px 6px; margin-left: 8px; vertical-align: 2px; }
+.row .dots { flex: 1; border-bottom: 2px dotted rgba(42,29,24,.35); transform: translateY(-4px); min-width: 12px; }
+.row .pr { font-weight: 700; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.add {
+  flex: 0 0 auto; width: 38px; height: 38px; border-radius: 50%;
+  border: 0; background: var(--wine); color: #fff; font: 700 22px/1 var(--body); cursor: pointer;
+  display: grid; place-items: center;
+}
+.add:hover { background: #5f1520; }
+.stepper { flex: 0 0 auto; display: inline-flex; align-items: center; gap: 2px; background: var(--wine); border-radius: 999px; color: #fff; }
+.stepper button { width: 34px; height: 38px; border: 0; background: transparent; color: #fff; font: 700 20px var(--body); cursor: pointer; border-radius: 999px; }
+.stepper output { min-width: 18px; text-align: center; font-weight: 700; font-variant-numeric: tabular-nums; }
+.paper .foot { margin: 18px 0 0; font-size: 13px; color: #6d5a50; }
+
+/* Product grid (snacks and drinks) */
+.grid-p { display: grid; grid-template-columns: repeat(auto-fill, minmax(176px, 1fr)); gap: 14px; }
+@media (max-width: 440px) { .grid-p { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; } }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: 16px; overflow: hidden; display: flex; flex-direction: column; }
+.card .ph { position: relative; aspect-ratio: 1 / 1; background: #fff; }
+.card .ph img { width: 100%; height: 100%; object-fit: contain; }
+.card .ph .init { position: absolute; inset: 0; display: grid; place-items: center; background: #26262a; color: var(--text); font: 700 40px var(--display); }
+.card .price {
+  position: absolute; right: 8px; bottom: 8px; background: var(--ink); color: #fff;
+  border-radius: 8px; padding: 4px 9px; font: 700 18px/1.1 var(--display); font-variant-numeric: tabular-nums;
+}
+.card .price small { font: 600 11px var(--body); margin-left: 2px; }
+.card .body { padding: 11px 12px 12px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
+.card .nm { font-weight: 700; font-size: 15px; line-height: 1.25; margin: 0; overflow-wrap: anywhere; }
+.card .note { font-size: 13px; color: var(--muted); margin: -4px 0 0; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip { font: 600 12px var(--body); color: var(--text); background: transparent; border: 1.5px solid var(--line); border-radius: 999px; padding: 4px 9px; cursor: pointer; }
+.chip[aria-pressed="true"] { border-color: var(--red); color: #fff; background: color-mix(in srgb, var(--red) 22%, transparent); }
+.card .add-row { margin-top: auto; }
+.add-wide {
+  width: 100%; border: 0; border-radius: 10px; padding: 10px; cursor: pointer;
+  background: #2a2a2e; color: var(--text); font: 700 14px var(--body);
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+}
+.add-wide:hover { background: var(--red); color: #fff; }
+.add-wide .cnt { background: var(--red); color: #fff; border-radius: 999px; font-size: 12px; padding: 1px 7px; }
+
+/* Combo */
+.combo .box { display: grid; grid-template-columns: .9fr 1.1fr; gap: 0; background: var(--panel); border: 1px solid var(--line); border-radius: 24px; overflow: hidden; }
+.combo .box img { width: 100%; height: 100%; object-fit: cover; min-height: 320px; }
+.combo .txt { padding: clamp(24px, 4vw, 48px); display: flex; flex-direction: column; justify-content: center; gap: 14px; }
+.combo h2 { font-size: clamp(36px, 5vw, 58px); line-height: .95; }
+.combo .sum { font-size: 18px; color: var(--muted); margin: 0; }
+.combo .sum b { color: var(--text); }
+.combo .total { font: 700 44px/1 var(--display); font-variant-numeric: tabular-nums; }
+.combo .total small { font: 600 16px var(--body); color: var(--muted); margin-left: 4px; }
+@media (max-width: 760px) { .combo .box { grid-template-columns: 1fr; } .combo .box img { min-height: 0; aspect-ratio: 4 / 3; } }
+
+/* Instagram + contact */
+.contact .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 28px; }
+.contact a.tile { display: flex; flex-direction: column; gap: 6px; text-decoration: none; background: var(--panel); border: 1px solid var(--line); border-radius: 18px; padding: 22px; }
+.contact a.tile:hover { border-color: var(--text); }
+.contact .tile svg { width: 28px; height: 28px; color: var(--red); }
+.contact .tile b { font: 700 22px var(--display); text-transform: uppercase; }
+.contact .tile span { color: var(--muted); font-size: 15px; font-variant-numeric: tabular-nums; }
+@media (max-width: 760px) { .contact .grid { grid-template-columns: 1fr; } }
+footer { border-top: 1px solid var(--line); padding: 28px 0 120px; color: var(--muted); font-size: 14px; }
+footer .wrap { display: flex; flex-wrap: wrap; gap: 14px 24px; align-items: center; justify-content: space-between; }
+
+/* Order tray */
+.tray {
+  position: fixed; left: 50%; bottom: 14px; transform: translateX(-50%); z-index: 30;
+  width: min(560px, calc(100% - 24px));
+  background: var(--text); color: var(--ink); border-radius: 18px;
+  box-shadow: 0 16px 40px rgba(0,0,0,.5);
+  display: flex; align-items: center; gap: 12px; padding: 10px 10px 10px 18px;
+}
+.tray[hidden] { display: none; }
+.tray .info { flex: 1; font-weight: 700; font-size: 15px; line-height: 1.2; }
+.tray .info small { display: block; font-weight: 500; color: #57534d; font-size: 13px; }
+.sheet-back { position: fixed; inset: 0; z-index: 40; background: rgba(0,0,0,.6); display: flex; align-items: flex-end; justify-content: center; }
+.sheet-back[hidden] { display: none; }
+.sheet {
+  width: 100%; max-width: 560px; max-height: 88vh; overflow: auto;
+  background: var(--panel); border: 1px solid var(--line); border-radius: 22px 22px 0 0;
+  padding: 22px 20px 26px;
+}
+@media (min-width: 600px) { .sheet-back { align-items: center; } .sheet { border-radius: 22px; } }
+.sheet h2 { font-size: 32px; display: flex; justify-content: space-between; align-items: center; }
+.sheet .x { background: transparent; border: 1.5px solid var(--line); color: var(--text); width: 40px; height: 40px; border-radius: 50%; font-size: 20px; cursor: pointer; }
+.olist { list-style: none; margin: 16px 0; padding: 0; }
+.olist li { display: flex; align-items: center; gap: 10px; padding: 10px 0; border-bottom: 1px solid var(--line); }
+.olist .nm { flex: 1; min-width: 0; font-weight: 600; overflow-wrap: anywhere; }
+.olist .pr { font-variant-numeric: tabular-nums; color: var(--muted); min-width: 64px; text-align: right; }
+.olist .stepper { background: #2a2a2e; }
+.ototal { display: flex; justify-content: space-between; font: 700 24px var(--display); margin: 6px 0 16px; }
+.fields { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 10px; margin-bottom: 16px; }
+.fields label { display: flex; flex-direction: column; gap: 6px; font-size: 13px; color: var(--muted); font-weight: 600; }
+.fields input {
+  font: 500 16px var(--body); color: var(--text); background: var(--ink);
+  border: 1.5px solid var(--line); border-radius: 10px; padding: 11px 12px;
+  width: 100%; min-width: 0;
+}
+.fields input:focus-visible { border-color: var(--red); outline: none; }
+.send { display: flex; flex-direction: column; gap: 10px; }
+.send .btn { width: 100%; }
+.send .alt { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 10px; }
+.hint { font-size: 13px; color: var(--muted); margin: 10px 0 0; }
+.toast {
+  position: fixed; left: 50%; top: 80px; transform: translateX(-50%); z-index: 50;
+  background: var(--text); color: var(--ink); font-weight: 700; padding: 10px 16px; border-radius: 999px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.4);
+}
+.toast[hidden] { display: none; }
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-wa" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2c0 1.3.9 2.5 1 2.7.1.2 1.8 2.8 4.4 3.9 1.6.7 2.3.8 3.1.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3Z"/></symbol>
+  <symbol id="i-vb" viewBox="0 0 24 24"><path fill="currentColor" d="M11.4 2C9 2 4.4 2.4 3 6.2 2.3 8 2.2 10.4 2.2 12.2c0 3 .5 5.6 3.3 7v2.5c0 .4.5.6.8.3l2.2-2.4c1.3.2 2.6.2 3.9.1 4.3-.3 8-1.7 8.9-6.6.4-2.2.3-5.3-.6-7.4C19.3 2.6 15.3 2 11.4 2Zm.2 1.6c3.3 0 6.4.5 7.4 3 .7 1.8.8 4.4.5 6.3-.7 3.8-3.6 4.9-7.1 5.2-1.3.1-2.5.1-3.8-.1l-1.9 2v-2.5c-2.4-1-2.9-3.2-2.9-5.8 0-1.6.1-3.6.7-5.1 1-2.6 4.4-3 7.1-3Zm.3 1.9a.4.4 0 0 0 0 .8 4.9 4.9 0 0 1 4.8 4.9.4.4 0 0 0 .8 0 5.7 5.7 0 0 0-5.6-5.7Zm-3 .9a1 1 0 0 0-.8.2c-.4.4-1.1 1-.9 1.8.5 2.1 2.6 5 5.4 6.1.8.3 1.4-.4 1.8-.9.3-.3.3-.8 0-1.1l-1.2-.9c-.4-.2-.8-.1-1 .2l-.4.5c-.2.2-.5.2-.6.1a5 5 0 0 1-2.3-2.3c-.1-.2-.1-.4.1-.6l.5-.4c.3-.2.4-.7.2-1l-.8-1.3a.9.9 0 0 0-.7-.4Zm3.2.6a.4.4 0 0 0 0 .8 2.9 2.9 0 0 1 2.8 2.9.4.4 0 0 0 .8 0 3.7 3.7 0 0 0-3.6-3.7Zm.1 1.6a.4.4 0 0 0 0 .8 1.2 1.2 0 0 1 1.1 1.2.4.4 0 0 0 .8 0 2 2 0 0 0-1.9-2Z"/></symbol>
+  <symbol id="i-ig" viewBox="0 0 24 24"><path fill="currentColor" d="M12 7.3A4.7 4.7 0 1 0 12 16.7 4.7 4.7 0 0 0 12 7.3Zm0 7.8a3.1 3.1 0 1 1 0-6.2 3.1 3.1 0 0 1 0 6.2Zm6-8a1.1 1.1 0 1 1-2.2 0 1.1 1.1 0 0 1 2.2 0ZM21.9 8c0-1.7-.5-3.2-1.7-4.4C19 2.5 17.6 2.1 15.9 2c-1.7-.1-6.9-.1-8.7 0-1.7.1-3.2.5-4.4 1.6C1.6 4.8 1.2 6.3 1.1 8c-.1 1.7-.1 6.9 0 8.7.1 1.7.5 3.2 1.7 4.4 1.2 1.2 2.7 1.6 4.4 1.7 1.7.1 6.9.1 8.7 0 1.7-.1 3.2-.5 4.4-1.7 1.2-1.2 1.6-2.7 1.7-4.4.1-1.7.1-7 0-8.7Zm-2.2 10.6a3.4 3.4 0 0 1-1.9 1.9c-1.3.5-4.5.4-5.9.4s-4.6.1-5.9-.4a3.4 3.4 0 0 1-1.9-1.9c-.5-1.3-.4-4.5-.4-5.9s-.1-4.6.4-5.9A3.4 3.4 0 0 1 5.9 5c1.3-.5 4.5-.4 5.9-.4s4.6-.1 5.9.4a3.4 3.4 0 0 1 1.9 1.9c.5 1.3.4 4.5.4 5.9s.1 4.6-.4 5.9Z"/></symbol>
+  <symbol id="i-ph" viewBox="0 0 24 24"><path fill="currentColor" d="M6.6 10.8a15.2 15.2 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1l-2.3 2.2Z"/></symbol>
+</svg>
+
+<header class="top">
+  <div class="wrap">
+    <a class="mark" href="#top" aria-label="Шо ќе јадеш? Почеток">Шо ќе<br>јадеш</a>
+    <nav class="links" aria-label="Главно мени">
+      <a href="#meni">Мени</a>
+      <a href="#porachaj">Како да порачаш</a>
+      <a href="#kontakt">Контакт</a>
+    </nav>
+    <a class="btn btn-red btn-small" href="#meni">Порачај</a>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero" aria-labelledby="h1">
+    <div class="wrap">
+      <div>
+        <h1 id="h1">Шо ќе<br>јадеш<span class="q">?</span></h1>
+        <p class="lead"><b>Тостови, сендвичи, бели пецива, грицки и пијалоци.</b> Прати порака, ние спремаме, ти само подигни. Без чекање во ред.</p>
+        <div class="cta">
+          <a class="btn btn-red" href="#meni">Избери од менито</a>
+          <a class="btn btn-ghost" href="https://wa.me/38975754888"><svg aria-hidden="true"><use href="#i-wa"></use></svg>Пиши на WhatsApp</a>
+        </div>
+        <p class="phone-line">Или јави се: <a href="tel:+38975754888">075 754 888</a></p>
+      </div>
+      <div class="hero-photo">
+        <img src="img/hero.jpg" alt="Топол тост со растопен кашкавал и шунка" width="1100" height="1465">
+        <span class="tag">Тост кашкавал шунка · 100 ден</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="band" aria-hidden="true">
+    <div class="track"><div class="seq"><span>Прати порака</span><span>·</span><span>Избегни ја гужвата</span><span>·</span><span>075 754 888</span><span>·</span><span>Шо ќе јадеш?</span><span>·</span></div><div class="seq"><span>Прати порака</span><span>·</span><span>Избегни ја гужвата</span><span>·</span><span>075 754 888</span><span>·</span><span>Шо ќе јадеш?</span><span>·</span></div><div class="seq"><span>Прати порака</span><span>·</span><span>Избегни ја гужвата</span><span>·</span><span>075 754 888</span><span>·</span><span>Шо ќе јадеш?</span><span>·</span></div><div class="seq"><span>Прати порака</span><span>·</span><span>Избегни ја гужвата</span><span>·</span><span>075 754 888</span><span>·</span><span>Шо ќе јадеш?</span><span>·</span></div></div>
+  </div>
+
+  <section class="menu" id="meni" aria-labelledby="h-menu">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Мени</p>
+        <h2 id="h-menu">Избери, ние спремаме</h2>
+        <p>Притисни + за да додадеш во нарачката. Сите цени се во денари.</p>
+      </div>
+      <div class="tabs" role="tablist" aria-label="Категории" id="tabs"></div>
+      <div id="panel" role="tabpanel"></div>
+    </div>
+  </section>
+
+  <section class="combo" aria-labelledby="h-combo">
+    <div class="wrap">
+      <div class="box">
+        <img src="img/combo.jpg" alt="Тост сендвич на даска до шише Coca-Cola" width="900" height="1200" loading="lazy">
+        <div class="txt">
+          <p class="eyebrow">Идеалната комбинација</p>
+          <h2 id="h-combo">Тост и<br>Coca-Cola</h2>
+          <p class="sum"><b>Тост кашкавал шунка</b> 100 ден + <b>Coca-Cola</b> 50 ден</p>
+          <div class="total">150<small>ден</small></div>
+          <div><button type="button" class="btn btn-red" id="add-combo">Додај ги двете во нарачката</button></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="how" id="porachaj" aria-labelledby="h-how">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Како да порачаш</p>
+        <h2 id="h-how">Три чекори до<br>топол тост</h2>
+      </div>
+      <div class="grid">
+        <ol class="steps">
+          <li><span class="n">1</span><div><h3>Избери</h3><p>Во менито притисни + на што сакаш. Ќе ти ја пресметаме вкупната цена.</p></div></li>
+          <li><span class="n">2</span><div><h3>Прати порака</h3><p>Со едно копче нарачката оди на WhatsApp, или копирај ја за Viber и Instagram.</p>
+            <div class="channels">
+              <a class="chan" href="https://wa.me/38975754888"><svg aria-hidden="true"><use href="#i-wa"></use></svg>WhatsApp</a>
+              <a class="chan" href="viber://chat?number=%2B38975754888"><svg aria-hidden="true"><use href="#i-vb"></use></svg>Viber</a>
+              <a class="chan" href="https://ig.me/m/sokejades"><svg aria-hidden="true"><use href="#i-ig"></use></svg>Instagram</a>
+            </div></div></li>
+          <li><span class="n">3</span><div><h3>Подигни</h3><p>Кога ќе стигнеш, нарачката те чека. Гужвата нека чека некој друг.</p></div></li>
+        </ol>
+        <div class="how-photo"><img src="img/chair.jpg" alt="Пресен сендвич во хартија на црвено столче, со натпис Прати порака, избегни ја гужвата" width="900" height="1125" loading="lazy"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="kontakt" aria-labelledby="h-contact">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">Контакт</p>
+        <h2 id="h-contact">Прати порака.<br>Избегни ја гужвата.</h2>
+      </div>
+      <div class="grid">
+        <a class="tile" href="tel:+38975754888"><svg aria-hidden="true"><use href="#i-ph"></use></svg><b>Јави се</b><span>075 754 888</span></a>
+        <a class="tile" href="https://wa.me/38975754888"><svg aria-hidden="true"><use href="#i-wa"></use></svg><b>WhatsApp и Viber</b><span>075 754 888</span></a>
+        <a class="tile" href="https://www.instagram.com/sokejades/"><svg aria-hidden="true"><use href="#i-ig"></use></svg><b>Instagram</b><span>@sokejades</span></a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© Шо ќе јадеш? · Цените важат до промена.</span>
+    <span>075 754 888 · @sokejades</span>
+  </div>
+</footer>
+
+<div class="tray" id="tray" hidden>
+  <div class="info" id="tray-info"></div>
+  <button type="button" class="btn btn-red btn-small" id="open-sheet">Види нарачка</button>
+</div>
+
+<div class="sheet-back" id="sheet-back" hidden>
+  <div class="sheet" role="dialog" aria-modal="true" aria-labelledby="h-order">
+    <h2 id="h-order">Твоја нарачка <button type="button" class="x" id="close-sheet" aria-label="Затвори">×</button></h2>
+    <ul class="olist" id="olist"></ul>
+    <div class="ototal"><span>Вкупно</span><span id="ototal">0 ден</span></div>
+    <div class="fields">
+      <label for="f-name">Име<input id="f-name" type="text" autocomplete="given-name" placeholder="на пр. Ана"></label>
+      <label for="f-time">Кога подигаш?<input id="f-time" type="text" placeholder="на пр. 12:30"></label>
+    </div>
+    <div class="send">
+      <a class="btn btn-red" id="send-wa" href="https://wa.me/38975754888"><svg aria-hidden="true"><use href="#i-wa"></use></svg>Прати на WhatsApp</a>
+      <div class="alt">
+        <button type="button" class="btn btn-ghost" id="copy-vb"><svg aria-hidden="true"><use href="#i-vb"></use></svg>Viber</button>
+        <button type="button" class="btn btn-ghost" id="copy-ig"><svg aria-hidden="true"><use href="#i-ig"></use></svg>Instagram</button>
+      </div>
+      <p class="hint">За Viber и Instagram нарачката се копира, отвори го разговорот и залепи ја пораката. Број: 075 754 888.</p>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast" role="status" hidden></div>
+
+<script>
+const PHONE = "38975754888";
+
+// Hot food, from the printed menu
+const HOT = [
+  { g: "Тост", items: [
+    { id: "t1", n: "Тост кашкавал", p: 80 },
+    { id: "t2", n: "Тост кашкавал шунка", p: 100 },
+    { id: "t3", n: "Тост кашкавал кулен", p: 120 },
+    { id: "t4", n: "Тост врат кашкавал", p: 120 },
+    { id: "t5", n: "Тост кашкавал печеница", p: 120 }
+  ]},
+  { g: "Сендвичи", items: [
+    { id: "s1", n: "Италијански сендвич", p: 100, isNew: true }
+  ]},
+  { g: "Бели пецива", items: [
+    { id: "b1", n: "Баничка со врат и кашкавал", p: 60 },
+    { id: "b2", n: "Баничка со топено сирење и кулен", p: 60 }
+  ]},
+  { g: "Благо", items: [
+    { id: "m1", n: "Палачинка со крем", p: 50 }
+  ]},
+  { g: "Додатоци", items: [
+    { id: "d1", n: "Чиа пудинг", p: 100 }
+  ]}
+];
+
+// Packaged snacks and drinks (same list as the snack menu)
+const SNACKS = [
+  // Пијалоци
+  { n: "Coca-Cola", p: 50, c: "drinks", k: "kako kola koka кока кола zero",
+    img: [{ l: "Оригинал", s: "img/p/cocacola.jpg" }, { l: "Zero", s: "img/p/cocacola-zero.jpg" }] },
+  { n: "Fanta", p: 50, c: "drinks", k: "фанта orange портокал",
+    img: [{ l: "", s: "img/p/fanta.jpg" }] },
+  { n: "Schweppes", p: 50, c: "drinks", k: "sveps швепс свепс bitter lemon битер лимон", note: "Bitter Lemon",
+    img: [{ l: "", s: "img/p/schweppes-bitter.jpg" }] },
+  { n: "Добра вода", p: 50, c: "drinks", k: "dobra voda",
+    img: [{ l: "Active", s: "img/p/dobravoda-active.jpg" }, { l: "Wellness ѓумбир", s: "img/p/dobravoda-wellness.jpg" }] },
+  { n: "Viva Fresh", p: 50, c: "drinks", k: "вива сок", note: "Мулти витамин",
+    img: [{ l: "Мулти витамин", s: "img/p/viva.jpg" }] },
+  { n: "Sinalco", p: 40, c: "drinks", k: "sinalko синалко",
+    img: [
+      { l: "Cola", s: "img/p/sinalco-cola.jpg" },
+      { l: "Orange", s: "img/p/sinalco-orange.jpg" },
+      { l: "Fresco", s: "img/p/sinalco-fresco.jpg" },
+      { l: "Ice Tea", s: "img/p/sinalco-icetea.jpg" }
+    ] },
+  { n: "Газоза", p: 40, c: "drinks", k: "gazoza prilepska прилепска", note: "Прилепска",
+    img: [{ l: "", s: "img/p/gazoza.jpg" }] },
+  { n: "Кожувчанка", p: 30, c: "drinks", k: "kozuvcanka kozuvchanka", note: "Минерална вода",
+    img: [{ l: "", s: "img/p/kozuvcanka.jpg" }] },
+  { n: "Изворска", p: 30, c: "drinks", k: "izvorska voda",
+    img: [{ l: "", s: "img/p/izvorska.jpg" }] },
+  { n: "Изворска со цуцла", p: 45, c: "drinks", k: "izvorska so cucla sport спорт",
+    img: [{ l: "", s: "img/p/izvorska-sport.jpg" }] },
+
+  // Слатко
+  { n: "Медењаци", p: 45, c: "sweets", k: "medenjaci medenjak", note: "SL, со портокал",
+    img: [{ l: "", s: "img/p/medenjak.jpg" }] },
+  { n: "7Days Max", p: 45, c: "sweets", k: "7 days max kroasan кроасан седум", note: "Кроасан",
+    img: [{ l: "Какао", s: "img/p/7days-max.jpg" }, { l: "Шумско овошје", s: "img/p/7days-fruit.jpg" }, { l: "Кикирики", s: "img/p/7days-peanut.jpg" }] },
+  { n: "7Days Super Max", p: 60, c: "sweets", k: "7 days super max kroasan кроасан седум", note: "Кроасан со какао крем",
+    img: [{ l: "", s: "img/p/7days-supermax.jpg" }] },
+  { n: "7Days Double Super Max", p: 45, c: "sweets", k: "7 days double super max kroasan кроасан седум дабл", note: "Какао и ванила",
+    img: [{ l: "", s: "img/p/7days-double.jpg" }] },
+  { n: "Euro вафел", p: 30, c: "sweets", k: "euro vafel еуро choco 4",
+    img: [{ l: "", s: "img/p/eurovafel.jpg" }] },
+  { n: "Albeni", p: 30, c: "sweets", k: "албени ulker",
+    img: [{ l: "", s: "img/p/albeni.jpg" }] },
+  { n: "Metro", p: 30, c: "sweets", k: "метро ulker",
+    img: [{ l: "", s: "img/p/metro.jpg" }] },
+  { n: "Бананка", p: 10, c: "sweets", k: "bananka choco banana sl",
+    img: [{ l: "", s: "img/p/chocobanana.jpg" }] },
+  { n: "Мини рол торта", p: 15, c: "sweets", k: "mini rol torticka тортичка mini roll vincinni", note: "Со чоколадо",
+    img: [{ l: "", s: "img/p/miniroll.jpg" }] },
+  { n: "Popkek", p: 25, c: "sweets", k: "popkjek попкек eti kolac колач", note: "Колач со чоколадо",
+    img: [{ l: "", s: "img/p/popkek.jpg" }] },
+  { n: "Ресани", p: 45, c: "sweets", k: "resani frutti vitaminka soft cake portokal портокал фрути", note: "Frutti, со портокал",
+    img: [{ l: "", s: "img/p/frutti.jpg" }] },
+  { n: "Мастики", p: 40, c: "sweets", k: "mastiki мастика гума airwaves orbit",
+    img: [{ l: "Orbit", s: "img/p/orbit.jpg" }, { l: "Airwaves", s: "img/p/airwaves.jpg" }] },
+  { n: "Fine Choko", p: 15, c: "sweets", k: "fine coko чоко фине uno",
+    img: [{ l: "", s: "img/p/fine.jpg" }] },
+  { n: "Snickers", p: 50, c: "sweets", k: "snikers сникерс",
+    img: [{ l: "", s: "img/p/snickers.jpg" }] },
+  { n: "Mars", p: 50, c: "sweets", k: "марс",
+    img: [{ l: "", s: "img/p/mars.jpg" }] },
+  { n: "Millennium", p: 35, c: "sweets", k: "milenium миленијум very peri",
+    img: [{ l: "Кокос", s: "img/p/millennium-coconut.jpg" }, { l: "Кикирики и карамела", s: "img/p/millennium-peanut.jpg" }] },
+  { n: "Agrocrem блок", p: 15, c: "sweets", k: "agrocrem blok агрокрем super",
+    img: [{ l: "", s: "img/p/agrocrem.jpg" }] },
+  { n: "Eurocrem блок", p: 15, c: "sweets", k: "euro crem coko еурокрем еуро крем чоко blok",
+    img: [{ l: "", s: "img/p/eurocrem.jpg" }] },
+  { n: "Чоко бисквит", p: 25, c: "sweets", k: "coko biskvit choco biscuit sl", note: "SL, млечна чоколада",
+    img: [{ l: "", s: "img/p/choco-biscuit.jpg" }] },
+  { n: "Linea наполитанка", p: 30, c: "sweets", k: "linea politanka napolitanka линеа",
+    img: [{ l: "", s: "img/p/linea.jpg" }] },
+  { n: "Milk Wow чоколадо", p: 20, c: "sweets", k: "milki wow cokolado милки вау",
+    img: [{ l: "", s: "img/p/milkwow-choco.jpg" }] },
+  { n: "Milk Wow наполитанка", p: 15, c: "sweets", k: "milki wow politanka napolitanka милки вау",
+    img: [{ l: "", s: "img/p/milkwow-napolitanka.jpg" }] },
+  { n: "Eden Joy", p: 25, c: "sweets", k: "еден џој кокос", note: "Кокос",
+    img: [{ l: "", s: "img/p/edenjoy.jpg" }] },
+
+  // Солено
+  { n: "Chipsy", p: 25, c: "salty", k: "чипс cipsi solen lut chips classic chili rebrasti ребрасти", note: "Солен или лут",
+    img: [{ l: "Солен", s: "img/p/chipsy-classic.jpg" }, { l: "Лут", s: "img/p/chipsy-chili.jpg" }] },
+  { n: "Chipsy домаќински", p: 60, c: "salty", k: "чипс cipsi domakinski domacinski kajmak кајмак sira сирење", 
+    img: [{ l: "Кајмак", s: "img/p/chipsy-domacinski.jpg" }, { l: "Сирење", s: "img/p/chipsy-domacinski-sira.jpg" }] },
+  { n: "Funky", p: 20, c: "salty", k: "fankite фанките фанки",
+    img: [{ l: "Пилешко", s: "img/p/funky-chicken.jpg" }, { l: "Кечап", s: "img/p/funky-ketchup.jpg" }] },
+  { n: "Smoki", p: 20, c: "salty", k: "смоки kikiriki кикирики",
+    img: [{ l: "", s: "img/p/smoki.jpg" }] },
+  { n: "Stobi Flips", p: 20, c: "salty", k: "стоби флипс stobiflips", note: "Со кикирики",
+    img: [{ l: "", s: "img/p/stobiflips.jpg" }] },
+  { n: "Hello соленки", p: 20, c: "salty", k: "helo хело solenki стапчиња", note: "Солени стапчиња",
+    img: [{ l: "", s: "img/p/hello.jpg" }] },
+  { n: "Pardon", p: 30, c: "salty", k: "пардон stapici", note: "Стапчиња со кикирики",
+    img: [{ l: "", s: "img/p/pardon.jpg" }] },
+  { n: "Patos", p: 20, c: "salty", k: "патос rolls baharatli зачинет",
+    img: [{ l: "Лут", s: "img/p/patos.jpg" }, { l: "Зачинет", s: "img/p/patos-baharatli.jpg" }] },
+  { n: "Bake Rolls", p: 55, c: "salty", k: "bejkrous bake rolls 7days бејк ролс",
+    img: [
+      { l: "Бекон", s: "img/p/bakerolls-bacon.jpg" },
+      { l: "Пица", s: "img/p/bakerolls-pizza.jpg" },
+      { l: "Бран, сол", s: "img/p/bakerolls-bran.jpg" }
+    ] }
+];
+
+const TABS = [
+  { id: "hot", t: "Топло" },
+  { id: "drinks", t: "Пијалоци" },
+  { id: "sweets", t: "Слатко" },
+  { id: "salty", t: "Солено" }
+];
+
+const $ = (s, el = document) => el.querySelector(s);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const initials = n => n.replace(/[^\p{L}\p{N} ]/gu, " ").split(/\s+/).filter(Boolean).slice(0, 2).map(w => w[0]).join("").toUpperCase();
+
+// Order: key -> { name, price, qty }
+const order = new Map();
+const variantSel = {}; // snack index -> chosen variant index
+let tab = "hot";
+
+function qtyOf(key) { return order.get(key)?.qty || 0; }
+function add(key, name, price, d = 1) {
+  const cur = order.get(key) || { name, price, qty: 0 };
+  cur.qty += d;
+  if (cur.qty <= 0) order.delete(key); else order.set(key, cur);
+  refresh();
+}
+function totals() {
+  let n = 0, sum = 0;
+  order.forEach(o => { n += o.qty; sum += o.qty * o.price; });
+  return { n, sum };
+}
+
+function stepperHTML(key) {
+  return `<span class="stepper"><button type="button" data-step="-1" data-key="${esc(key)}" aria-label="Една помалку">−</button><output>${qtyOf(key)}</output><button type="button" data-step="1" data-key="${esc(key)}" aria-label="Една повеќе">+</button></span>`;
+}
+
+function renderHot() {
+  return `<div class="paper">
+    <p class="title">Шо ќе јадеш?</p>
+    <p class="sub">МЕНИ</p>
+    ${HOT.map(g => `<div class="grp"><h3>${esc(g.g)}</h3>
+      ${g.items.map(it => {
+        const key = "hot:" + it.id;
+        const ctl = qtyOf(key)
+          ? stepperHTML(key)
+          : `<button type="button" class="add" data-hot="${it.id}" aria-label="Додај ${esc(it.n)}">+</button>`;
+        return `<div class="row"><span class="nm">${esc(it.n)}${it.isNew ? '<span class="new">НОВО</span>' : ""}</span><span class="dots"></span><span class="pr">${it.p} ден</span>${ctl}</div>`;
+      }).join("")}
+    </div>`).join("")}
+    <p class="foot">Топло, спремено кога ќе пратиш порака.</p>
+  </div>`;
+}
+
+function snackKey(i) {
+  const it = SNACKS[i];
+  const v = it.img && it.img.length > 1 ? it.img[variantSel[i] || 0].l : "";
+  return { key: "s:" + i + ":" + v, name: v ? `${it.n} (${v})` : it.n };
+}
+function snackCount(i) {
+  let c = 0;
+  order.forEach((o, k) => { if (k.startsWith("s:" + i + ":")) c += o.qty; });
+  return c;
+}
+function renderSnacks(cat) {
+  return `<div class="grid-p">${SNACKS.map((it, i) => {
+    if (it.c !== cat) return "";
+    const imgs = it.img || [];
+    const vi = variantSel[i] || 0;
+    const ph = imgs.length
+      ? `<img src="${esc(imgs[vi].s)}" alt="${esc(it.n)}" loading="lazy" width="520" height="520">`
+      : `<div class="init" aria-hidden="true">${esc(initials(it.n))}</div>`;
+    const chips = imgs.length > 1
+      ? `<div class="chips" role="group" aria-label="Вкус">${imgs.map((v, j) => `<button type="button" class="chip" data-chip="${i}" data-v="${j}" aria-pressed="${j === vi}">${esc(v.l)}</button>`).join("")}</div>`
+      : "";
+    const c = snackCount(i);
+    return `<article class="card">
+      <div class="ph">${ph}<span class="price">${it.p}<small>ден</small></span></div>
+      <div class="body">
+        <p class="nm">${esc(it.n)}</p>
+        ${it.note ? `<p class="note">${esc(it.note)}</p>` : ""}
+        ${chips}
+        <div class="add-row"><button type="button" class="add-wide" data-snack="${i}">+ Додај${c ? ` <span class="cnt">${c}</span>` : ""}</button></div>
+      </div>
+    </article>`;
+  }).join("")}</div>`;
+}
+
+function renderTabs() {
+  $("#tabs").innerHTML = TABS.map(t => `<button type="button" class="tab" role="tab" id="tab-${t.id}" data-tab="${t.id}" aria-selected="${t.id === tab}">${t.t}</button>`).join("");
+}
+function renderPanel() {
+  $("#panel").innerHTML = tab === "hot" ? renderHot() : renderSnacks(tab);
+  $("#panel").setAttribute("aria-labelledby", "tab-" + tab);
+}
+
+function message() {
+  const lines = ["Здраво! Би сакал/а да порачам:"];
+  order.forEach(o => lines.push(`• ${o.qty}× ${o.name} — ${o.qty * o.price} ден`));
+  lines.push(`Вкупно: ${totals().sum} ден`);
+  const nm = $("#f-name").value.trim();
+  const tm = $("#f-time").value.trim();
+  if (nm) lines.push(`Име: ${nm}`);
+  if (tm) lines.push(`Подигнување: ${tm}`);
+  return lines.join("\n");
+}
+
+function renderSheet() {
+  const list = $("#olist");
+  if (!order.size) { closeSheet(); return; }
+  list.innerHTML = [...order.entries()].map(([k, o]) =>
+    `<li><span class="nm">${esc(o.name)}</span>${stepperHTML(k)}<span class="pr">${o.qty * o.price} ден</span></li>`).join("");
+  $("#ototal").textContent = totals().sum + " ден";
+  $("#send-wa").href = `https://wa.me/${PHONE}?text=${encodeURIComponent(message())}`;
+}
+
+function refresh() {
+  const { n, sum } = totals();
+  const tray = $("#tray");
+  tray.hidden = n === 0;
+  $("#tray-info").innerHTML = `Нарачка · ${n} ${n === 1 ? "производ" : "производи"}<small>Вкупно ${sum} ден</small>`;
+  renderPanel();
+  if (!$("#sheet-back").hidden) renderSheet();
+}
+
+let toastT;
+function toast(msg) {
+  const t = $("#toast");
+  t.textContent = msg; t.hidden = false;
+  clearTimeout(toastT); toastT = setTimeout(() => { t.hidden = true; }, 2200);
+}
+async function copyOrder(url) {
+  const text = message();
+  try { await navigator.clipboard.writeText(text); toast("Нарачката е копирана. Залепи ја во разговорот."); }
+  catch { toast("Не можеше да се копира. Препиши ја нарачката рачно."); }
+  window.location.href = url;
+}
+
+let lastFocus;
+function openSheet() {
+  lastFocus = document.activeElement;
+  $("#sheet-back").hidden = false;
+  renderSheet();
+  $("#close-sheet").focus();
+}
+function closeSheet() {
+  $("#sheet-back").hidden = true;
+  if (lastFocus) lastFocus.focus();
+}
+
+document.addEventListener("click", e => {
+  const t = e.target.closest("button");
+  if (!t) return;
+  if (t.dataset.tab) { tab = t.dataset.tab; renderTabs(); renderPanel(); return; }
+  if (t.dataset.hot) {
+    for (const g of HOT) for (const it of g.items) if (it.id === t.dataset.hot) add("hot:" + it.id, it.n, it.p);
+    $(`[data-key="hot:${t.dataset.hot}"][data-step="1"]`)?.focus();
+    return;
+  }
+  if (t.dataset.step) {
+    const k = t.dataset.key, o = order.get(k);
+    if (o) add(k, o.name, o.price, +t.dataset.step);
+    return;
+  }
+  if (t.dataset.chip !== undefined) {
+    variantSel[t.dataset.chip] = +t.dataset.v;
+    renderPanel();
+    $(`[data-chip="${t.dataset.chip}"][data-v="${t.dataset.v}"]`)?.focus();
+    return;
+  }
+  if (t.dataset.snack !== undefined) {
+    const i = +t.dataset.snack, { key, name } = snackKey(i);
+    add(key, name, SNACKS[i].p);
+    $(`[data-snack="${i}"]`)?.focus();
+    toast(`Додадено: ${name}`);
+    return;
+  }
+});
+
+$("#add-combo").addEventListener("click", () => {
+  add("hot:t2", "Тост кашкавал шунка", 100);
+  const ci = SNACKS.findIndex(s => s.n === "Coca-Cola");
+  if (ci >= 0) { variantSel[ci] = 0; const { key, name } = snackKey(ci); add(key, name, SNACKS[ci].p); }
+  toast("Тост и Coca-Cola се во нарачката");
+});
+$("#open-sheet").addEventListener("click", openSheet);
+$("#close-sheet").addEventListener("click", closeSheet);
+$("#sheet-back").addEventListener("click", e => { if (e.target.id === "sheet-back") closeSheet(); });
+document.addEventListener("keydown", e => { if (e.key === "Escape" && !$("#sheet-back").hidden) closeSheet(); });
+["#f-name", "#f-time"].forEach(s => $(s).addEventListener("input", renderSheet));
+$("#copy-vb").addEventListener("click", () => copyOrder("viber://chat?number=%2B" + PHONE));
+$("#copy-ig").addEventListener("click", () => copyOrder("https://ig.me/m/sokejades"));
+
+// Photos that fail to load show initials instead of a broken icon
+document.addEventListener("error", e => {
+  const img = e.target;
+  if (img.tagName !== "IMG" || !img.closest(".card")) return;
+  if (!img.dataset.retried) { img.dataset.retried = "1"; img.src = img.src.split("?")[0] + "?r=" + Date.now(); return; }
+  const d = document.createElement("div");
+  d.className = "init"; d.setAttribute("aria-hidden", "true");
+  d.textContent = initials(img.alt || "");
+  img.replaceWith(d);
+}, true);
+
+renderTabs();
+refresh();
+</script>
+</body>
+</html>
